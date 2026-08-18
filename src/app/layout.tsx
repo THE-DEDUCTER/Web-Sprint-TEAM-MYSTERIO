@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter_Tight, Urbanist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const interTight = Inter_Tight({
@@ -57,7 +58,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interTight.variable} ${urbanist.variable}`}>
       <head>
-        <script
+        <Script
+          id="ld-json-website"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -74,7 +76,8 @@ export default function RootLayout({
             })
           }}
         />
-        <script
+        <Script
+          id="ld-json-org"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -91,7 +94,7 @@ export default function RootLayout({
           }}
         />
         <link rel="stylesheet" type="text/css" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css" />
-        <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js" async></script>
+        <Script id="tomtom-maps" src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js" strategy="beforeInteractive"></Script>
       </head>
       <body suppressHydrationWarning={true}>
         <style dangerouslySetInnerHTML={{
@@ -110,7 +113,7 @@ export default function RootLayout({
             }
           `
         }} />
-        <script dangerouslySetInnerHTML={{
+        <Script id="anti-inspect" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `
             document.addEventListener('contextmenu', function (e) {
               e.preventDefault();
