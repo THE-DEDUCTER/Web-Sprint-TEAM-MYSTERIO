@@ -44,21 +44,16 @@ export default function LandingPage() {
       <section className={styles.hero} style={{ position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
           <LiquidEther
-            colors={[ '#5227FF', '#FF9FFC', '#B497CF' ]}
             mouseForce={20}
-            cursorSize={90}
-            isViscous={false}
-            viscous={30}
-            iterationsViscous={8}
-            iterationsPoisson={32}
-            resolution={0.5}
-            isBounce={true}
+            cursorSize={50}
+            isViscous={true}
+            viscous={55}
+            colors={["#d0cddc","#a49ad7","#ffdbc3"]}
             autoDemo={true}
-            autoSpeed={0.45}
-            autoIntensity={2.2}
-            takeoverDuration={0.25}
-            autoResumeDelay={3000}
-            autoRampDuration={0.6}
+            autoSpeed={0.5}
+            autoIntensity={1.5}
+            isBounce={true}
+            resolution={0.5}
           />
         </div>
         <div className={styles.heroContent} style={{ position: 'relative', zIndex: 10 }}>
