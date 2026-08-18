@@ -8,6 +8,8 @@ import {
   Shield, ShieldCheck, Globe
 } from "lucide-react";
 
+import LiquidEther from '@/components/LiquidEther';
+
 export default function LandingPage() {
   return (
     <div className={styles.container}>
@@ -37,8 +39,27 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroContent}>
+      <section className={styles.hero} style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
+          <LiquidEther
+            colors={[ '#5227FF', '#FF9FFC', '#B497CF' ]}
+            mouseForce={20}
+            cursorSize={90}
+            isViscous={false}
+            viscous={30}
+            iterationsViscous={8}
+            iterationsPoisson={32}
+            resolution={0.5}
+            isBounce={true}
+            autoDemo={true}
+            autoSpeed={0.45}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+          />
+        </div>
+        <div className={styles.heroContent} style={{ position: 'relative', zIndex: 10 }}>
           <h1 className={styles.heroTitle}>
             A Social<br />
             Platform for<br />
