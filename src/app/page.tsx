@@ -1,98 +1,245 @@
-'use client'
+"use client";
 
-import dynamic from 'next/dynamic'
-import { Calendar, MapPin, Users } from 'lucide-react'
+import Image from "next/image";
+import styles from "./page.module.css";
+import { 
+  Home, Users, Heart, MessageSquare, 
+  RefreshCw, Map, Calendar, User, 
+  Shield, ShieldCheck, Globe
+} from "lucide-react";
 
-// Dynamically import Map component with ssr: false
-const MapComponent = dynamic(() => import('@/components/Map'), { 
-  ssr: false,
-  loading: () => <div className="h-[400px] w-full bg-gray-200 animate-pulse rounded-xl" />
-})
-
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--background)] to-[var(--spidey-blue)] opacity-20"></div>
-          {/* Decorative Web Lines */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: `radial-gradient(circle at center, var(--spider-red) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}></div>
+    <div className={styles.container}>
+      {/* Decorative Background Elements */}
+      <div className={styles.bgGlow} style={{ top: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(109,40,217,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '15%', right: '-15%', width: '45vw', height: '45vw', background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '40%', left: '-20%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ bottom: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)' }} />
+
+      {/* Navbar */}
+      <nav className={styles.navbar}>
+        <div className={styles.logoContainer}>
+          <Image 
+            src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
+            alt="Cohort Logo" 
+            width={32} 
+            height={32} 
+            className={styles.logoImage}
+            unoptimized
+          />
+          <span>Cohort</span>
         </div>
-        
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto glass p-12 rounded-3xl glow-effect">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-[var(--foreground)]" style={{ fontFamily: 'var(--font-urbanist)' }}>
-            Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--spider-red)] to-[var(--mysterio-purple)]">Team Mysterio</span>
+        <button className={styles.signInBtn}>
+          <Globe size={16} />
+          Sign in with Google
+        </button>
+      </nav>
+
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            A Social<br />
+            Platform for<br />
+            PCCOE
           </h1>
-          <p className="text-xl md:text-2xl text-[var(--text-muted)] mb-8">
-            The ultimate student cohort platform. Connect, discover, and swing through your campus life with unparalleled ease.
+          <p className={styles.heroSubtitle}>
+            Aggregate discussions, campus navigation, and encrypted<br />
+            messaging in real time. Monitor events and track opportunities<br />
+            all without juggling multiple logins.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="px-8 py-4 bg-[var(--spider-red)] text-white font-bold rounded-full hover:bg-[var(--primary-hover)] transition-all shadow-[0_0_15px_var(--spider-red)] hover:scale-105">
-              Join the Web
-            </button>
-            <button className="px-8 py-4 border-2 border-[var(--mysterio-purple)] text-[var(--foreground)] font-bold rounded-full hover:bg-[var(--mysterio-purple)] hover:text-white transition-all shadow-[0_0_15px_var(--mysterio-purple)] hover:scale-105">
-              Explore Events
-            </button>
+          <div className={styles.heroCtas}>
+            <button className={styles.btnPrimary}>Get Started</button>
+            <button className={styles.btnSecondary}>Explore Platform</button>
+          </div>
+        </div>
+
+        {/* Floating Glass Widget */}
+        <div className={styles.heroWidget}>
+          <div className={styles.widgetHeader}>
+            <div className={styles.widgetDots}>
+              <div className={styles.widgetDot}></div>
+              <div className={styles.widgetDot}></div>
+              <div className={styles.widgetDot}></div>
+            </div>
+            <span style={{ marginLeft: "auto", fontSize: "12px", color: "#666" }}>Today&apos;s App Interactions</span>
+          </div>
+          <div className={styles.widgetNumber}>
+            <span style={{ fontSize: "24px", color: "#9ca3af" }}>👁</span>
+            11,510
+            <span className={styles.widgetBadge}>+7.5%</span>
+          </div>
+          <p className={styles.widgetTitle} style={{ marginTop: "1rem" }}>Activity in real time</p>
+          <div className={styles.widgetChart}>
+            {[40, 30, 50, 45, 60, 80, 55, 65, 50, 45, 70].map((height, i) => (
+              <div key={i} className={styles.chartBar} style={{ height: `${height}%` }}></div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Events / Map Section */}
-      <section id="events" className="py-24 px-4 bg-[var(--surface)]">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4" style={{ fontFamily: 'var(--font-urbanist)' }}>Campus Radar</h2>
-            <p className="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">
-              Locate technical events, hackathons, and cohort meetups happening around you in real-time.
+      {/* Connecting Communities */}
+      <section className={styles.communitiesSection}>
+        <h2 className={styles.communitiesTitle}>Connecting Communities</h2>
+        <div className={styles.communitiesList}>
+          <div className={styles.communityLogo}><Shield size={32} /> OWASP</div>
+          <div className={styles.communityLogo}><ShieldCheck size={32} /> GDSC</div>
+          <div className={styles.communityLogo}><Users size={32} /> ACM</div>
+          <div className={styles.communityLogo}><MessageSquare size={32} /> LBSIT</div>
+          <div className={styles.communityLogo}><RefreshCw size={32} /> IOT CLUB</div>
+        </div>
+      </section>
+
+      {/* Marquee */}
+      <div className={styles.marquee}>
+        <div className={styles.marqueeText}>
+          HORT SOCIAL ✦ CONNECT ✦ DISCOVER ✦ COHORT SOCIAL ✦ CONNECT ✦ DISCOVER ✦ 
+        </div>
+      </div>
+
+      {/* Explore Platform Features */}
+      <section className={styles.featuresSection}>
+        <h2 className={styles.featuresTitle}>Explore Platform Features</h2>
+        <p className={styles.featuresSubtitle}>
+          From encrypted messaging to real-time campus navigation, discover all the<br />
+          tools designed to empower your social experience.
+        </p>
+
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Home size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Home Feed</h3>
+            <p className={styles.featureCardDesc}>
+              Stay updated with real-time news, posts, and announcements directly tailored to your campus life.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-2">
-              <MapComponent />
-            </div>
-            <div className="glass p-6 rounded-xl space-y-6">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <MapPin className="text-[var(--spider-red)]" /> Upcoming Alerts
-              </h3>
-              
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="p-4 rounded-lg border border-[var(--surface-border)] hover:border-[var(--mysterio-purple)] transition-colors cursor-pointer">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="font-bold text-[var(--foreground)]">Web Sprint Competition {i}</h4>
-                      <span className="text-xs bg-[var(--spidey-blue)] text-white px-2 py-1 rounded-full">Active</span>
-                    </div>
-                    <div className="flex items-center text-sm text-[var(--text-muted)] gap-4">
-                      <span className="flex items-center gap-1"><Calendar size={14}/> Today</span>
-                      <span className="flex items-center gap-1"><Users size={14}/> 50+ Joined</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Users size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Communities</h3>
+            <p className={styles.featureCardDesc}>
+              Join clubs and groups, participate in discussions, and connect with like-minded individuals.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Heart size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Friends</h3>
+            <p className={styles.featureCardDesc}>
+              Build your personal network by adding friends, sending direct messages, and seeing what they are up to.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><MessageSquare size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Connect</h3>
+            <p className={styles.featureCardDesc}>
+              Network with alumni, faculty, and industry professionals to advance your career.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><RefreshCw size={24} /></div>
+            <h3 className={styles.featureCardTitle}>XD (Exchange)</h3>
+            <p className={styles.featureCardDesc}>
+              A community marketplace where students can buy, sell, or exchange items effortlessly.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Map size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Campus Maps</h3>
+            <p className={styles.featureCardDesc}>
+              Interactive 3D campus navigation powered by TomTom to easily find classrooms, labs, and more.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Calendar size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Academic Calendar</h3>
+            <p className={styles.featureCardDesc}>
+              Never miss an exam, holiday, or important deadline with our integrated academic schedule.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><User size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Student Profile</h3>
+            <p className={styles.featureCardDesc}>
+              Showcase your achievements, certifications, and academic record in one professional profile.
+            </p>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="team" className="py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8" style={{ fontFamily: 'var(--font-urbanist)' }}>Who is Team Mysterio?</h2>
-          <div className="glass p-8 rounded-2xl text-lg text-[var(--text-muted)] leading-relaxed">
-            <p className="mb-4">
-              We are a collective of developers, designers, and innovators building the next generation of campus portals. Inspired by the duality of Spider-Man's agility and Mysterio's grand illusions, we craft web experiences that are both blazingly fast and visually spectacular.
-            </p>
-            <p>
-              This platform aggregates technical discussions, event locations, and real-time community engagement without the clutter of traditional social media. Powered by Next.js, Supabase, and mapping technologies.
-            </p>
-          </div>
+      <section className={styles.aboutSection}>
+        <h2 className={styles.aboutTitle}>About Cohort PCCOE</h2>
+        <div className={styles.aboutContent}>
+          <p>
+            Cohort is the official student/social platform built exclusively for <strong>Pimpri Chinchwad College of Engineering (PCCOE)</strong> Pune. Designed and developed by students, for students, it serves as the central hub where you can connect, collaborate, and stay informed about everything happening on campus.
+          </p>
+          <p>
+            As an internal social media platform, Cohort is a premium UI for the college ecosystem. It aggregates posts from 15+ student communities and clubs — including technical organizations like <strong>OWASP, Google Developer Groups on Campus (GDGC), ACM, and Board of Sports</strong>, as well as creative and social clubs like Art Circle, NSS, and CSI. Students can subscribe to communities, receive real-time post notifications, and participate in discussions without needing to browse multiple WhatsApp groups or Instagram pages.
+          </p>
+          <p>
+            The platform features <strong>end-to-end encrypted messaging</strong> through the Connect module, allowing students to chat privately with friends or in groups. The <strong>XD (Exchange)</strong> module acts as an exclusive marketplace for the campus, enabling students to securely buy, sell, and exchange items, books, and study materials.
+          </p>
+          <p>
+            Cohort also features an <strong>interactive campus map</strong>, powered by TomTom, helping new students navigate PCCOE&apos;s sprawling campus. The integrated <strong>academic calendar</strong> keeps everyone synchronized with exam schedules, holidays, and submission deadlines. Students can build their professional presence through <strong>achievement profiles</strong>, showcasing certifications, hackathon wins, and project accomplishments to peers and faculty alike.
+          </p>
+          <p>
+            Built with modern technologies including React, Supabase, and real-time WebSockets, Cohort delivers a fast, responsive experience across devices. The platform prioritizes student privacy, data security, and collaborative tools—making it a digital extension of the PCCOE experience.
+          </p>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerLinks}>
+          <div className={styles.footerColumn}>
+            <h4 className={styles.footerColumnTitle}>Product</h4>
+            <a href="#">Home</a>
+            <a href="#">Connect</a>
+            <a href="#">Maps</a>
+            <a href="#">Profile</a>
+          </div>
+          <div className={styles.footerColumn}>
+            <h4 className={styles.footerColumnTitle}>Company</h4>
+            <a href="#">Communities</a>
+            <a href="#">Friends</a>
+            <a href="#">XD</a>
+            <a href="#">Maps</a>
+            <a href="#">Calendar</a>
+          </div>
+        </div>
+        
+        <div className={styles.footerBottom}>
+          <div className={styles.regulatory}>
+            <p><strong>Regulatory & Policies</strong></p>
+            <p>Please read our terms and privacy policy before using the platform. Powered by <a href="#">Cohort PCCOE</a>.</p>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <Image 
+              src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
+              alt="Cohort" 
+              width={40} 
+              height={40} 
+              unoptimized
+            />
+            <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', fontFamily: 'var(--font-urbanist)' }}>
+              Cohort
+            </span>
+          </div>
+
+          <div className={styles.footerSocials}>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }

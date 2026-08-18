@@ -1,18 +1,8 @@
 :root {
   --background: #ffffff;
   --foreground: #111827;
-  
-  /* Mysterio/Spider-Man Theme */
-  --spider-red: #E63946;
-  --mysterio-purple: #8338EC;
-  --spidey-blue: #1D3557;
-  
-  --primary: var(--spider-red);
-  --primary-hover: #c42b36;
-  --secondary: var(--mysterio-purple);
-  --secondary-hover: #692bc1;
-  --accent: var(--spidey-blue);
-  
+  --primary: #6d28d9;
+  --primary-hover: #5b21b6;
   --surface: #ffffff;
   --surface-border: #e5e7eb;
   --text-muted: #6b7280;
@@ -25,13 +15,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #f3f4f6;
-    
-    --primary: var(--spider-red);
-    --primary-hover: #ff4d5a;
-    --secondary: var(--mysterio-purple);
-    --secondary-hover: #9d5cff;
-    --accent: #2a4d7d;
-    
+    --primary: #8b5cf6;
+    --primary-hover: #a78bfa;
     --surface: #171717;
     --surface-border: #333333;
     --text-muted: #9ca3af;
@@ -69,11 +54,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -95,15 +75,4 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(30, 30, 30, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
-}
-
-/* Animations */
-@keyframes glow {
-  0% { box-shadow: 0 0 5px var(--mysterio-purple); }
-  50% { box-shadow: 0 0 20px var(--mysterio-purple), 0 0 30px var(--spider-red); }
-  100% { box-shadow: 0 0 5px var(--mysterio-purple); }
-}
-
-.glow-effect {
-  animation: glow 3s infinite alternate;
 }

@@ -50,9 +50,6 @@ export const metadata: Metadata = {
   },
 };
 
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,11 +113,19 @@ export default function RootLayout({
             }
           `
         }} />
-        <Navigation />
-        <main className="flex-grow pt-16">
-          {children}
-        </main>
-        <Footer />
+        <Script id="anti-inspect" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('contextmenu', function (e) {
+              e.preventDefault();
+            });
+            document.addEventListener('keydown', function (e) {
+              if (e.key === 'F12') e.preventDefault();
+              if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) e.preventDefault();
+              if (e.ctrlKey && e.key === 'u') e.preventDefault();
+            });
+          `
+        }} />
+        {children}
       </body>
     </html>
   );
