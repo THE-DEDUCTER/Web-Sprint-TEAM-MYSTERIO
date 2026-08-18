@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter_Tight, Urbanist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Providers } from "@/components/Providers";
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -125,7 +126,9 @@ export default function RootLayout({
             });
           `
         }} />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

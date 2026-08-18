@@ -33,7 +33,7 @@ export function ensureSeeded() {
   if (!isClient()) return
   if (initialized) return
   initialized = true
-  if (!localStorage.getItem(PREFIX + 'seeded_v2')) {
+  if (!localStorage.getItem(PREFIX + 'seeded_v3')) {
     write('users', seedUsers)
     write('communities', seedCommunities)
     write('posts', seedPosts)
@@ -43,8 +43,8 @@ export function ensureSeeded() {
     write('messages', [] as ChatMessage[])
     write('notifications', {} as Record<string, AppNotification[]>)
     write('contact_messages', [] as ContactMessage[])
-    write('community_subs', { 'u-veerbhadra': ['com-cohort'] } as Record<string, string[]>)
-    localStorage.setItem(PREFIX + 'seeded_v2', '1')
+    write('community_subs', { 'u-aarav': ['com-cohort'] } as Record<string, string[]>)
+    localStorage.setItem(PREFIX + 'seeded_v3', '1')
   }
 }
 

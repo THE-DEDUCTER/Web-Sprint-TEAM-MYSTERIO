@@ -6,10 +6,8 @@ import { Button } from '@/components/ui/Button'
 import { Avatar } from '@/components/ui/Avatar'
 import { useAuth } from '@/contexts/AuthContext'
 import { seedUsers, DEMO_PERSONAS } from '@/lib/seed/users'
-import { AuthProvider } from '@/contexts/AuthContext'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 
-function LoginPage() {
+export default function LoginPage() {
   const { user, loading, isDemoMode, signInWithGoogle, signInDemo } = useAuth()
   const router = useRouter()
   const [signingIn, setSigningIn] = useState<string | null>(null)
@@ -37,7 +35,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-8 bg-neutral-50 dark:bg-neutral-950 px-6 py-16">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 px-6 py-16 transition-colors duration-200">
       <div className="flex flex-col items-center gap-3">
         <LogoMark size={64} />
         <h1 className="text-xl font-extrabold">Sign in to Cohort</h1>
@@ -60,7 +58,7 @@ function LoginPage() {
                 key={p.id}
                 onClick={() => pick(p.id)}
                 disabled={!!signingIn}
-                className="flex w-full items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2.5 text-left hover:border-brand-400 hover:bg-brand-50/50 dark:hover:bg-brand-900/20 disabled:opacity-60"
+                className="flex w-full items-center gap-3 rounded-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2.5 text-left hover:border-brand-400 hover:bg-brand-50/50 dark:hover:bg-brand-900/20 disabled:opacity-60 transition"
               >
                 <Avatar name={p.displayName} size={36} />
                 <div className="min-w-0">
@@ -74,15 +72,5 @@ function LoginPage() {
         </div>
       )}
     </div>
-  )
-}
-
-export default function LoginWithProviders() {
-  return (
-    <ThemeProvider>
-      <AuthProvider>
-        <LoginPage />
-      </AuthProvider>
-    </ThemeProvider>
   )
 }

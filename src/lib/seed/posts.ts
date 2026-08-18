@@ -13,7 +13,7 @@ export const seedPosts: Post[] = [
     likeCount: 41,
     likedByMe: false,
     replies: [
-      { id: 'r-1', postId: 'p-1', authorId: 'u-veerbhadra', body: 'okay buddy, find me the OWASP club', createdAt: day(29) },
+      { id: 'r-1', postId: 'p-1', authorId: 'u-aarav', body: 'okay buddy, find me the OWASP club', createdAt: day(29) },
     ],
   },
   {
@@ -109,7 +109,7 @@ export const seedPosts: Post[] = [
   },
   {
     id: 'p-10',
-    authorId: 'u-veerbhadra',
+    authorId: 'u-aarav',
     body: 'Good morning c/cohort ☀️ starting the week with a full battery and zero patience for 8 AM lectures.',
     createdAt: day(1),
     attachments: [],

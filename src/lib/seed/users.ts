@@ -70,12 +70,12 @@ export const seedUsers: AppUser[] = [
     flexCount: 3,
   },
   {
-    id: 'u-veerbhadra',
-    handle: 'veerbhadra24',
-    displayName: 'Veerbhadra Mahant',
+    id: 'u-aarav',
+    handle: 'aaravsharma',
+    displayName: 'Aarav Sharma',
     department: 'Computer Department',
     role: 'user',
-    email: 'veerbhadra.mahant24@pccoepune.org',
+    email: 'aarav.sharma24@pccoepune.org',
     bio: 'Building stuff, breaking stuff, fixing stuff.',
     communitiesCount: 4,
     followersCount: 52,
@@ -110,7 +110,7 @@ export const seedUsers: AppUser[] = [
   },
 ]
 
-export const DEMO_PERSONAS = ['u-veerbhadra', 'u-shravan', 'u-isha', 'u-om']
+export const DEMO_PERSONAS = ['u-aarav', 'u-shravan', 'u-isha', 'u-om']
 
 export function getUserById(id: string): AppUser | undefined {
   return seedUsers.find((u) => u.id === id)
