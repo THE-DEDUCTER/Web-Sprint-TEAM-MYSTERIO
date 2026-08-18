@@ -216,10 +216,11 @@ export default function LandingPage() {
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <Image 
-              src="https://www.cohortpccoe.in/cohort-logo.png" 
+              src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
               alt="Cohort" 
               width={40} 
               height={40} 
+              unoptimized
             />
             <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', fontFamily: 'var(--font-urbanist)' }}>
               Cohort
