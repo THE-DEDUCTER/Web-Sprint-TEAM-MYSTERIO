@@ -83,8 +83,8 @@ Here is our battle plan to conquer the leaderboard:
 
 ## 👥 Team Mysterio
 
-- **Chinmay Hire (THE_DEDUCTER)** - Lead Architect & Developer
-- *Add other team members here...*
+- **Chinmay Hire (THE_DEDUCTER)** - Developer
+- **AdityaxDeore** - Developer
 
 ---
 
