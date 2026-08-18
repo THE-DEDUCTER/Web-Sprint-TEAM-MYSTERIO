@@ -69,7 +69,7 @@ export default function LandingPage() {
             all without juggling multiple logins.
           </p>
           <div className={styles.heroCtas}>
-            <Link href="/dashboard">
+            <Link href="/login">
               <button className={styles.btnPrimary}>Get Started</button>
             </Link>
             <button className={styles.btnSecondary}>Explore Platform</button>
