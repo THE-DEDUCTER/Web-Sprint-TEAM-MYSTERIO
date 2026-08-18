@@ -11,7 +11,7 @@ export function VideoLoader({ size = 120, className = '' }: { size?: number; cla
   return (
     <div className={`relative flex items-center justify-center overflow-hidden rounded-2xl ${className}`} style={{ width: size, height: size }}>
       <video
-        src="/coh-loader-light_pmzlpg.mp4"
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/coh-loader-light_pmzlpg.mp4`}
         autoPlay
         loop
         muted
@@ -36,7 +36,7 @@ export function LogoMark({ size = 32, className = '' }: { size?: number; classNa
     <div className={`relative flex items-center justify-center shrink-0 ${className}`} style={{ width: size, height: size }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/cohort-logo.png"
+        src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/cohort-logo.png`}
         alt="Cohort Logo"
         width={size}
         height={size}

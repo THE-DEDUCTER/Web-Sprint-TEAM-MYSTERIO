@@ -32,7 +32,7 @@ export function InitialLoader() {
       <div className="relative flex flex-col items-center gap-6 max-w-sm px-4 text-center">
         <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-neutral-900 flex items-center justify-center">
           <video
-            src="/coh-loader-light_pmzlpg.mp4"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/coh-loader-light_pmzlpg.mp4`}
             autoPlay
             loop
             muted
@@ -42,7 +42,7 @@ export function InitialLoader() {
         </div>
         <div className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/cohort-logo.png" alt="Cohort Logo" className="w-8 h-8 object-contain" />
+          <img src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/cohort-logo.png`} alt="Cohort Logo" className="w-8 h-8 object-contain" />
           <span className="text-xl font-bold tracking-tight text-white font-urbanist">
             Cohort PCCOE
           </span>
