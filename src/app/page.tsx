@@ -1,16 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./page.module.css";
 import { 
   Home, Users, Heart, MessageSquare, 
   RefreshCw, Map, Calendar, User, 
-  Shield, ShieldCheck, Globe
+  Shield, ShieldCheck, Globe, Moon, Sun
 } from "lucide-react";
+import { useTheme } from '@/contexts/ThemeContext';
 
 import LiquidEther from '@/components/LiquidEther';
 
 export default function LandingPage() {
+  const { theme, toggle } = useTheme();
+
   return (
     <div className={styles.container}>
       {/* Decorative Background Elements */}
@@ -22,20 +26,17 @@ export default function LandingPage() {
       {/* Navbar */}
       <nav className={styles.navbar}>
         <div className={styles.logoContainer}>
-          <Image 
-            src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
-            alt="Cohort Logo" 
-            width={32} 
-            height={32} 
-            className={styles.logoImage}
-            unoptimized
-          />
           <span>Cohort</span>
         </div>
-        <button className={styles.signInBtn}>
-          <Globe size={16} />
-          Sign in with Google
-        </button>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <button onClick={toggle} className="iconbtn" aria-label="Toggle theme">
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button className={styles.signInBtn}>
+            <Globe size={16} />
+            Sign in with Google
+          </button>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -71,7 +72,9 @@ export default function LandingPage() {
             all without juggling multiple logins.
           </p>
           <div className={styles.heroCtas}>
-            <button className={styles.btnPrimary}>Get Started</button>
+            <Link href="/dashboard">
+              <button className={styles.btnPrimary}>Get Started</button>
+            </Link>
             <button className={styles.btnSecondary}>Explore Platform</button>
           </div>
         </div>
@@ -236,13 +239,6 @@ export default function LandingPage() {
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <Image 
-              src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
-              alt="Cohort" 
-              width={40} 
-              height={40} 
-              unoptimized
-            />
             <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', fontFamily: 'var(--font-urbanist)' }}>
               Cohort
             </span>
