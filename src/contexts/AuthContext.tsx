@@ -64,9 +64,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function signInWithGoogle() {
     if (isSupabaseConfigured && supabase) {
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
       await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: `${window.location.origin}/dashboard` },
+        options: { redirectTo: `${window.location.origin}${basePath}/dashboard` },
       })
     }
   }
