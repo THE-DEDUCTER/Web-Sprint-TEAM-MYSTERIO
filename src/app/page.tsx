@@ -6,14 +6,16 @@ import styles from "./page.module.css";
 import { 
   Home, Users, Heart, MessageSquare, 
   RefreshCw, Map, Calendar, User, 
-  Shield, ShieldCheck, Globe, Moon, Sun
+  Shield, ShieldCheck, Moon, Sun
 } from "lucide-react";
 import { useTheme } from '@/contexts/ThemeContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 import LiquidEther from '@/components/LiquidEther';
 
 export default function LandingPage() {
   const { theme, toggle } = useTheme();
+  const { signInWithGoogle } = useAuth();
 
   return (
     <div className={styles.container}>
@@ -32,8 +34,7 @@ export default function LandingPage() {
           <button onClick={toggle} className="iconbtn" aria-label="Toggle theme">
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <button className={styles.signInBtn}>
-            <Globe size={16} />
+          <button onClick={signInWithGoogle} className={styles.signInBtn}>
             Sign in with Google
           </button>
         </div>
