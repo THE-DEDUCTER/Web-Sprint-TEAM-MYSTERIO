@@ -5,41 +5,33 @@ import styles from "./page.module.css";
 import { 
   Home, Users, Heart, MessageSquare, 
   RefreshCw, Map, Calendar, User, 
-  Shield, ShieldCheck
+  Shield, ShieldCheck, Globe
 } from "lucide-react";
 
 export default function LandingPage() {
   return (
     <div className={styles.container}>
       {/* Decorative Background Elements */}
-      <div className={styles.bgDecoration} style={{ top: '10%', left: '5%' }}><RefreshCw size={24} /></div>
-      <div className={styles.bgDecoration} style={{ top: '20%', right: '15%' }}><RefreshCw size={32} /></div>
-      <div className={styles.bgDecoration} style={{ top: '40%', left: '20%' }}><RefreshCw size={20} /></div>
-      <div className={styles.bgDecoration} style={{ bottom: '30%', right: '10%' }}><RefreshCw size={28} /></div>
+      <div className={styles.bgGlow} style={{ top: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(109,40,217,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '15%', right: '-15%', width: '45vw', height: '45vw', background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '40%', left: '-20%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ bottom: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)' }} />
 
       {/* Navbar */}
       <nav className={styles.navbar}>
         <div className={styles.logoContainer}>
           <Image 
-            src="/cohort-logo.png" 
+            src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
             alt="Cohort Logo" 
             width={32} 
             height={32} 
             className={styles.logoImage}
-            onError={(e) => {
-              // Fallback if image doesn't exist locally
-              e.currentTarget.src = "https://www.cohortpccoe.in/cohort-logo.png";
-            }}
+            unoptimized
           />
           <span>Cohort</span>
         </div>
         <button className={styles.signInBtn}>
-          <Image 
-            src="https://www.google.com/favicon.ico" 
-            alt="Google" 
-            width={16} 
-            height={16} 
-          />
+          <Globe size={16} />
           Sign in with Google
         </button>
       </nav>
