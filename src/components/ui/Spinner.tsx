@@ -7,31 +7,42 @@ export function Spinner({ size = 28, className = '' }: { size?: number; classNam
   )
 }
 
+export function VideoLoader({ size = 120, className = '' }: { size?: number; className?: string }) {
+  return (
+    <div className={`relative flex items-center justify-center overflow-hidden rounded-2xl ${className}`} style={{ width: size, height: size }}>
+      <video
+        src="/coh-loader-light_pmzlpg.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="h-full w-full object-cover rounded-2xl"
+      />
+    </div>
+  )
+}
+
 export function BrandSplash({ label }: { label?: string }) {
   return (
-    <div className="flex h-full min-h-[50vh] w-full flex-col items-center justify-center gap-4">
-      <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-neutral-50 dark:bg-neutral-800 shadow-sm">
-        <LogoMark size={56} />
-      </div>
-      {label && <p className="text-sm text-neutral-500 dark:text-neutral-400">{label}</p>}
+    <div className="flex h-full min-h-[60vh] w-full flex-col items-center justify-center gap-4 bg-white dark:bg-neutral-950">
+      <VideoLoader size={140} />
+      {label && <p className="text-sm font-medium text-neutral-600 dark:text-neutral-300 animate-pulse">{label}</p>}
     </div>
   )
 }
 
 export function LogoMark({ size = 32, className = '' }: { size?: number; className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" className={`${className} animate-pulse`}>
-      <defs>
-        <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#4F46E5" />
-          <stop offset="50%" stopColor="#EC4899" />
-          <stop offset="100%" stopColor="#F59E0B" />
-        </linearGradient>
-      </defs>
-      <circle cx="32" cy="32" r="30" fill="url(#logo-grad)" />
-      <circle cx="32" cy="32" r="14" fill="none" stroke="white" strokeWidth="4" />
-      <circle cx="22" cy="26" r="4" fill="white" />
-      <circle cx="42" cy="38" r="4" fill="white" />
-    </svg>
+    <div className={`relative flex items-center justify-center shrink-0 ${className}`} style={{ width: size, height: size }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/cohort-logo.png"
+        alt="Cohort Logo"
+        width={size}
+        height={size}
+        className="h-full w-full object-contain"
+      />
+    </div>
   )
 }
+

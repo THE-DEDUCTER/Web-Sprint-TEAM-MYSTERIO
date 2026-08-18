@@ -27,7 +27,8 @@ export default function LandingPage() {
 
       {/* Navbar */}
       <nav className={styles.navbar}>
-        <div className={styles.logoContainer}>
+        <div className={styles.logoContainer} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image src="/cohort-logo.png" alt="Cohort Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
           <span>Cohort</span>
         </div>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -239,7 +240,8 @@ export default function LandingPage() {
             <p>Please read our terms and privacy policy before using the platform. Powered by <a href="#">Cohort PCCOE</a>.</p>
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Image src="/cohort-logo.png" alt="Cohort Logo" width={40} height={40} style={{ objectFit: 'contain' }} />
             <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', fontFamily: 'var(--font-urbanist)' }}>
               Cohort
             </span>
