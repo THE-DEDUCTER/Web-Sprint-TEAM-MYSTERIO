@@ -9,12 +9,12 @@
   overflow: hidden;
 }
 
-/* Background floating bees */
-.bgDecoration {
+/* Background glowing lights */
+.bgGlow {
   position: absolute;
-  opacity: 0.1;
   pointer-events: none;
   z-index: 0;
+  mix-blend-mode: screen;
 }
 
 /* Navbar */
