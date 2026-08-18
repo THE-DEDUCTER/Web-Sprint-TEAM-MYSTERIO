@@ -36,15 +36,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       supabase.auth.getSession().then(async ({ data }) => {
         const sessionUser = data.session?.user
         if (sessionUser) {
-          const appUser = await getUserById(sessionUser.id)
-          if (mounted) setUser(appUser ?? null)
+          let appUser = await getUserById(sessionUser.id)
+          if (!appUser) {
+            appUser = {
+              id: sessionUser.id,
+              handle: sessionUser.email?.split('@')[0] || `user_${sessionUser.id.substring(0,6)}`,
+              displayName: sessionUser.user_metadata?.full_name || 'New User',
+              avatarUrl: sessionUser.user_metadata?.avatar_url,
+              role: 'STUDENT',
+            } as AppUser
+          }
+          if (mounted) setUser(appUser)
         }
         if (mounted) setLoading(false)
       })
       const { data: sub } = supabase.auth.onAuthStateChange(async (_event, session) => {
         if (session?.user) {
-          const appUser = await getUserById(session.user.id)
-          if (mounted) setUser(appUser ?? null)
+          let appUser = await getUserById(session.user.id)
+          if (!appUser) {
+            appUser = {
+              id: session.user.id,
+              handle: session.user.email?.split('@')[0] || `user_${session.user.id.substring(0,6)}`,
+              displayName: session.user.user_metadata?.full_name || 'New User',
+              avatarUrl: session.user.user_metadata?.avatar_url,
+              role: 'STUDENT',
+            } as AppUser
+          }
+          if (mounted) setUser(appUser)
         } else if (mounted) {
           setUser(null)
         }
