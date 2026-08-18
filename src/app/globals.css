@@ -2,6 +2,29 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #6d28d9;
+  --primary-hover: #5b21b6;
+  --surface: #ffffff;
+  --surface-border: #e5e7eb;
+  --text-muted: #6b7280;
+  
+  --font-inter: var(--font-inter-tight), sans-serif;
+  --font-urbanist: var(--font-urbanist), sans-serif;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f3f4f6;
+  --primary: #8b5cf6;
+  --primary-hover: #a78bfa;
+  --surface: #171717;
+  --surface-border: #333333;
+  --text-muted: #9ca3af;
+}
+
 html, body, #root {
   height: 100%;
 }
@@ -10,6 +33,8 @@ body {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--foreground);
+  background: var(--background);
 }
 
 ::-webkit-scrollbar {
@@ -44,4 +69,17 @@ body {
   justify-content: center;
   border-radius: 9999px;
   border-width: 1px;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

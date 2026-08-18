@@ -1,61 +1,48 @@
-'use client'
-import Link from 'next/link'
-import { Moon, Sun, Eye, TrendingUp, Home, Heart, Users, MessageCircle, Zap, MapPin, Calendar, User } from 'lucide-react'
-import { LogoMark } from '@/components/ui/Spinner'
-import { Button } from '@/components/ui/Button'
-import { useTheme } from '@/contexts/ThemeContext'
-import { DecorativeFigure } from '@/components/shell/DecorativeFigure'
-import LiquidEther from '@/components/LiquidEther'
+"use client";
 
-const communities = ['OWASP', 'GDGC', 'ACM', 'LFDT', 'IOT Club', 'Geeks For Geeks', 'AIMSA', 'ISR', 'NSS', 'Art Circle']
+import Image from "next/image";
+import styles from "./page.module.css";
+import { 
+  Home, Users, Heart, MessageSquare, 
+  RefreshCw, Map, Calendar, User, 
+  Shield, ShieldCheck, Globe
+} from "lucide-react";
 
-const features = [
-  { icon: Home, title: 'Home Feed', body: 'Stay updated with a personalized feed of posts, announcements, and discussions from your subscribed communities and friends across campus.' },
-  { icon: Heart, title: 'Communities', body: 'Discover and join 30+ student-run clubs and organizations at PCCOE — from OWASP and GDGC to Art Circle and NSS.' },
-  { icon: Users, title: 'Friends', body: 'Build your campus network by adding friends, viewing their activity, and staying connected through shared communities.' },
-  { icon: MessageCircle, title: 'Connect', body: 'Real-time encrypted messaging with end-to-end privacy. Chat one-on-one or in group conversations with fellow students.' },
-  { icon: Zap, title: 'XD (Exchange)', body: 'An anonymous exchange board where students share honest thoughts, campus tips, and creative ideas freely.' },
-  { icon: MapPin, title: 'Campus Maps', body: 'Interactive 3D campus navigation powered by TomTom — find classrooms, labs, cafeterias, and event venues instantly.' },
-  { icon: Calendar, title: 'Academic Calendar', body: 'Never miss an exam, holiday, or submission deadline. Sync your academic schedule and get timely reminders.' },
-  { icon: User, title: 'Student Profile', body: 'Showcase your achievements, certifications, and hackathon wins. Build a professional portfolio visible to peers and faculty.' },
-]
+import LiquidEther from '@/components/LiquidEther';
 
-export default function Landing() {
-  const { theme, toggle } = useTheme()
-  const bars = [40, 55, 48, 65, 60, 78, 72, 90, 85, 100]
-
+export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 selection:bg-brand-500 selection:text-white transition-colors duration-200">
-      <header className="sticky top-0 z-30 border-b border-neutral-100 dark:border-neutral-900 bg-white/80 dark:bg-neutral-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
-          <div className="flex items-center gap-2">
-            <LogoMark size={30} />
-            <span className="text-lg font-extrabold tracking-tight">Cohort</span>
-            <span className="hidden text-xs font-semibold text-neutral-400 dark:text-neutral-600 sm:inline">PCCOE</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggle}
-              aria-label="Toggle Theme"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
-            >
-              {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
-            </button>
-            <Link href="/login">
-              <Button variant="secondary" className="gap-2 text-xs sm:text-sm">
-                <GoogleIcon />
-                Sign in with Google
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+    <div className={styles.container}>
+      {/* Decorative Background Elements */}
+      <div className={styles.bgGlow} style={{ top: '-10%', left: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(109,40,217,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '15%', right: '-15%', width: '45vw', height: '45vw', background: 'radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ top: '40%', left: '-20%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%)' }} />
+      <div className={styles.bgGlow} style={{ bottom: '-10%', right: '-10%', width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 70%)' }} />
 
-      <section className="relative mx-auto max-w-6xl overflow-hidden px-6 pb-16 pt-12 sm:pt-20">
-        {/* Background LiquidEther Canvas */}
-        <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-30 z-0 overflow-hidden">
+      {/* Navbar */}
+      <nav className={styles.navbar}>
+        <div className={styles.logoContainer}>
+          <Image 
+            src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
+            alt="Cohort Logo" 
+            width={32} 
+            height={32} 
+            className={styles.logoImage}
+            unoptimized
+          />
+          <span>Cohort</span>
+        </div>
+        <button className={styles.signInBtn}>
+          <Globe size={16} />
+          Sign in with Google
+        </button>
+      </nav>
+
+      {/* Hero Section */}
+      <section className={styles.hero} style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }}>
           <LiquidEther
-            colors={['#5227FF', '#FF9FFC', '#B497CF']}
+            colors={[ '#5227FF', '#FF9FFC', '#B497CF' ]}
             mouseForce={20}
             cursorSize={90}
             isViscous={false}
@@ -72,143 +59,208 @@ export default function Landing() {
             autoRampDuration={0.6}
           />
         </div>
-
-        <div className="absolute -top-10 right-0 h-72 w-72 rounded-full bg-gradient-to-br from-pink-300/30 via-purple-300/30 to-white blur-3xl dark:from-pink-500/10 dark:via-purple-500/10 pointer-events-none" />
-        <DecorativeFigure variant={2} className="absolute bottom-0 left-0 h-40 w-40 pointer-events-none" />
-        <DecorativeFigure variant={3} className="absolute right-4 top-24 h-32 w-32 pointer-events-none" />
-
-        <div className="relative z-10 grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-brand-600 sm:text-5xl lg:text-6xl">
-              A Social Platform for PCCOE
-            </h1>
-            <p className="mt-6 max-w-md text-lg text-neutral-600 dark:text-neutral-400">
-              Aggregate discussions, campus navigation, and encrypted messaging in real time. Monitor events and track
-              opportunities—all without juggling multiple logins.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/login">
-                <Button className="!bg-neutral-900 !text-white hover:!bg-neutral-800 dark:!bg-white dark:!text-neutral-900 px-6 py-3 text-base shadow-md">
-                  Get Started
-                </Button>
-              </Link>
-              <Link href="/login">
-                <Button variant="secondary" className="px-6 py-3 text-base shadow-sm">
-                  Explore platform
-                </Button>
-              </Link>
-            </div>
+        <div className={styles.heroContent} style={{ position: 'relative', zIndex: 10 }}>
+          <h1 className={styles.heroTitle}>
+            A Social<br />
+            Platform for<br />
+            PCCOE
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Aggregate discussions, campus navigation, and encrypted<br />
+            messaging in real time. Monitor events and track opportunities<br />
+            all without juggling multiple logins.
+          </p>
+          <div className={styles.heroCtas}>
+            <button className={styles.btnPrimary}>Get Started</button>
+            <button className={styles.btnSecondary}>Explore Platform</button>
           </div>
+        </div>
 
-          <div className="relative mx-auto w-full max-w-sm">
-            <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-2xl">
-              <div className="flex items-center gap-1.5 border-b border-neutral-100 dark:border-neutral-800 px-4 py-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
-              </div>
-              <div className="p-5">
-                <p className="text-[11px] font-bold uppercase tracking-wide text-neutral-400">Total Project Views</p>
-                <div className="mt-1 flex items-center gap-2">
-                  <Eye size={20} className="text-brand-600" />
-                  <span className="text-3xl font-extrabold">11,461</span>
-                  <span className="ml-1 flex items-center gap-0.5 rounded-full bg-green-50 dark:bg-green-950 px-2 py-0.5 text-xs font-semibold text-green-600">
-                    <TrendingUp size={12} /> +4.2%
-                  </span>
-                </div>
-                <p className="mt-1 text-xs text-neutral-400">Updating in realtime</p>
-                <div className="mt-5 flex h-24 items-end gap-1.5">
-                  {bars.map((h, i) => (
-                    <div key={i} className="flex-1 rounded-t bg-brand-200 dark:bg-brand-800 transition-all duration-300" style={{ height: `${h}%` }} />
-                  ))}
-                </div>
-              </div>
+        {/* Floating Glass Widget */}
+        <div className={styles.heroWidget}>
+          <div className={styles.widgetHeader}>
+            <div className={styles.widgetDots}>
+              <div className={styles.widgetDot}></div>
+              <div className={styles.widgetDot}></div>
+              <div className={styles.widgetDot}></div>
             </div>
+            <span style={{ marginLeft: "auto", fontSize: "12px", color: "#666" }}>Today&apos;s App Interactions</span>
+          </div>
+          <div className={styles.widgetNumber}>
+            <span style={{ fontSize: "24px", color: "#9ca3af" }}>👁</span>
+            11,510
+            <span className={styles.widgetBadge}>+7.5%</span>
+          </div>
+          <p className={styles.widgetTitle} style={{ marginTop: "1rem" }}>Activity in real time</p>
+          <div className={styles.widgetChart}>
+            {[40, 30, 50, 45, 60, 80, 55, 65, 50, 45, 70].map((height, i) => (
+              <div key={i} className={styles.chartBar} style={{ height: `${height}%` }}></div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="space-y-3 border-y border-neutral-100 dark:border-neutral-900 bg-neutral-50/60 dark:bg-neutral-900/40 py-5">
-        <Marquee items={communities} speed="marquee" />
-        <Marquee items={['COHORT SOCIAL', 'CONNECT', 'DISCOVER', 'NAVIGATE']} speed="marquee-slow" bold />
+      {/* Connecting Communities */}
+      <section className={styles.communitiesSection}>
+        <h2 className={styles.communitiesTitle}>Connecting Communities</h2>
+        <div className={styles.communitiesList}>
+          <div className={styles.communityLogo}><Shield size={32} /> OWASP</div>
+          <div className={styles.communityLogo}><ShieldCheck size={32} /> GDSC</div>
+          <div className={styles.communityLogo}><Users size={32} /> ACM</div>
+          <div className={styles.communityLogo}><MessageSquare size={32} /> LBSIT</div>
+          <div className={styles.communityLogo}><RefreshCw size={32} /> IOT CLUB</div>
+        </div>
+      </section>
+
+      {/* Marquee */}
+      <div className={styles.marquee}>
+        <div className={styles.marqueeText}>
+          HORT SOCIAL ✦ CONNECT ✦ DISCOVER ✦ COHORT SOCIAL ✦ CONNECT ✦ DISCOVER ✦ 
+        </div>
       </div>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight">Explore Platform Features</h2>
-          <p className="mt-3 text-neutral-500 dark:text-neutral-400">
-            From encrypted messaging to real-time campus navigation, discover all the tools designed to empower your
-            social experience.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((f) => (
-            <div key={f.title} className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 hover:shadow-md transition">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 dark:bg-brand-900/40 text-brand-600">
-                <f.icon size={20} />
-              </div>
-              <h3 className="mt-4 font-bold">{f.title}</h3>
-              <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{f.body}</p>
-            </div>
-          ))}
+      {/* Explore Platform Features */}
+      <section className={styles.featuresSection}>
+        <h2 className={styles.featuresTitle}>Explore Platform Features</h2>
+        <p className={styles.featuresSubtitle}>
+          From encrypted messaging to real-time campus navigation, discover all the<br />
+          tools designed to empower your social experience.
+        </p>
+
+        <div className={styles.featuresGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Home size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Home Feed</h3>
+            <p className={styles.featureCardDesc}>
+              Stay updated with real-time news, posts, and announcements directly tailored to your campus life.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Users size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Communities</h3>
+            <p className={styles.featureCardDesc}>
+              Join clubs and groups, participate in discussions, and connect with like-minded individuals.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Heart size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Friends</h3>
+            <p className={styles.featureCardDesc}>
+              Build your personal network by adding friends, sending direct messages, and seeing what they are up to.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><MessageSquare size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Connect</h3>
+            <p className={styles.featureCardDesc}>
+              Network with alumni, faculty, and industry professionals to advance your career.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><RefreshCw size={24} /></div>
+            <h3 className={styles.featureCardTitle}>XD (Exchange)</h3>
+            <p className={styles.featureCardDesc}>
+              A community marketplace where students can buy, sell, or exchange items effortlessly.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Map size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Campus Maps</h3>
+            <p className={styles.featureCardDesc}>
+              Interactive 3D campus navigation powered by TomTom to easily find classrooms, labs, and more.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><Calendar size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Academic Calendar</h3>
+            <p className={styles.featureCardDesc}>
+              Never miss an exam, holiday, or important deadline with our integrated academic schedule.
+            </p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon}><User size={24} /></div>
+            <h3 className={styles.featureCardTitle}>Student Profile</h3>
+            <p className={styles.featureCardDesc}>
+              Showcase your achievements, certifications, and academic record in one professional profile.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-neutral-100 dark:border-neutral-900 bg-neutral-50/60 dark:bg-neutral-900/40 px-6 py-20">
-        <DecorativeFigure variant={1} className="absolute -right-4 bottom-0 h-48 w-48 pointer-events-none" />
-        <div className="relative mx-auto max-w-3xl space-y-4 text-neutral-600 dark:text-neutral-300">
-          <h2 className="text-2xl font-extrabold tracking-tight text-neutral-900 dark:text-white">About Cohort PCCOE</h2>
+      {/* About Section */}
+      <section className={styles.aboutSection}>
+        <h2 className={styles.aboutTitle}>About Cohort PCCOE</h2>
+        <div className={styles.aboutContent}>
           <p>
-            Cohort is the official student platform for Pimpri Chinchwad College of Engineering, built by students,
-            for students. With 350+ active users and growing, it aggregates 30+ communities across every department
-            into a single, unified experience.
+            Cohort is the official student/social platform built exclusively for <strong>Pimpri Chinchwad College of Engineering (PCCOE)</strong> Pune. Designed and developed by students, for students, it serves as the central hub where you can connect, collaborate, and stay informed about everything happening on campus.
           </p>
           <p>
-            Connect brings end-to-end encrypted messaging to campus, with disappearing messages for privacy-first
-            conversations. XD (Exchange) is our anonymous board for honest thoughts, campus tips and creative ideas —
-            no names attached.
+            As an internal social media platform, Cohort is a premium UI for the college ecosystem. It aggregates posts from 15+ student communities and clubs — including technical organizations like <strong>OWASP, Google Developer Groups on Campus (GDGC), ACM, and Board of Sports</strong>, as well as creative and social clubs like Art Circle, NSS, and CSI. Students can subscribe to communities, receive real-time post notifications, and participate in discussions without needing to browse multiple WhatsApp groups or Instagram pages.
           </p>
           <p>
-            The interactive campus map, powered by TomTom, helps you find classrooms, labs, and cafeterias in
-            seconds, while the academic calendar keeps exams, holidays, and deadlines in one place. Your profile
-            becomes a living portfolio of achievements, certifications, and hackathon wins.
+            The platform features <strong>end-to-end encrypted messaging</strong> through the Connect module, allowing students to chat privately with friends or in groups. The <strong>XD (Exchange)</strong> module acts as an exclusive marketplace for the campus, enabling students to securely buy, sell, and exchange items, books, and study materials.
           </p>
           <p>
-            Built with React, Supabase, and real-time WebSocket connections — Cohort is engineered to be fast,
-            private, and genuinely useful. Your data stays yours; we built this for the community, not for ads.
+            Cohort also features an <strong>interactive campus map</strong>, powered by TomTom, helping new students navigate PCCOE&apos;s sprawling campus. The integrated <strong>academic calendar</strong> keeps everyone synchronized with exam schedules, holidays, and submission deadlines. Students can build their professional presence through <strong>achievement profiles</strong>, showcasing certifications, hackathon wins, and project accomplishments to peers and faculty alike.
+          </p>
+          <p>
+            Built with modern technologies including React, Supabase, and real-time WebSockets, Cohort delivers a fast, responsive experience across devices. The platform prioritizes student privacy, data security, and collaborative tools—making it a digital extension of the PCCOE experience.
           </p>
         </div>
       </section>
 
-      <footer className="border-t border-neutral-100 dark:border-neutral-900 px-6 py-8 text-center text-sm text-neutral-400">
-        © {new Date().getFullYear()} Cohort — A Social Platform for PCCOE. Not affiliated with PCCOE administration.
+      {/* Footer */}
+      <footer className={styles.footer}>
+        <div className={styles.footerLinks}>
+          <div className={styles.footerColumn}>
+            <h4 className={styles.footerColumnTitle}>Product</h4>
+            <a href="#">Home</a>
+            <a href="#">Connect</a>
+            <a href="#">Maps</a>
+            <a href="#">Profile</a>
+          </div>
+          <div className={styles.footerColumn}>
+            <h4 className={styles.footerColumnTitle}>Company</h4>
+            <a href="#">Communities</a>
+            <a href="#">Friends</a>
+            <a href="#">XD</a>
+            <a href="#">Maps</a>
+            <a href="#">Calendar</a>
+          </div>
+        </div>
+        
+        <div className={styles.footerBottom}>
+          <div className={styles.regulatory}>
+            <p><strong>Regulatory & Policies</strong></p>
+            <p>Please read our terms and privacy policy before using the platform. Powered by <a href="#">Cohort PCCOE</a>.</p>
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <Image 
+              src="https://placehold.co/100x100/6d28d9/ffffff/png?text=C" 
+              alt="Cohort" 
+              width={40} 
+              height={40} 
+              unoptimized
+            />
+            <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--primary)', fontFamily: 'var(--font-urbanist)' }}>
+              Cohort
+            </span>
+          </div>
+
+          <div className={styles.footerSocials}>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
-  )
-}
-
-function Marquee({ items, speed, bold }: { items: string[]; speed: 'marquee' | 'marquee-slow'; bold?: boolean }) {
-  const doubled = [...items, ...items, ...items]
-  return (
-    <div className="overflow-hidden">
-      <div className={`marquee-track gap-8 ${speed === 'marquee' ? 'animate-marquee' : 'animate-marquee-slow'}`}>
-        {doubled.map((item, i) => (
-          <span key={i} className={`shrink-0 whitespace-nowrap px-2 text-sm ${bold ? 'font-bold text-brand-600' : 'font-medium text-neutral-500 dark:text-neutral-400'}`}>
-            {item} {bold && <span className="mx-2 text-neutral-300 dark:text-neutral-700">✦</span>}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function GoogleIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 48 48">
-      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.6 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z" />
-      <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4c-7.7 0-14.4 4.4-17.7 10.7z" />
-      <path fill="#4CAF50" d="M24 44c5.3 0 10.1-2 13.7-5.4l-6.3-5.3C29.4 34.9 26.8 36 24 36c-5.3 0-9.6-3.4-11.3-8.1l-6.5 5C9.5 39.5 16.2 44 24 44z" />
-      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.3 5.3C40.5 36.4 44 30.8 44 24c0-1.3-.1-2.7-.4-3.5z" />
-    </svg>
-  )
+  );
 }
