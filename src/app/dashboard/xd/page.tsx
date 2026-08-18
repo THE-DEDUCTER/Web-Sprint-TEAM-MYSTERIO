@@ -1,5 +1,5 @@
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { Hash, Heart, ChevronDown, Share2, Shuffle, ExternalLink } from 'lucide-react'
 import { PageHeader } from '@/components/shell/PageHeader'

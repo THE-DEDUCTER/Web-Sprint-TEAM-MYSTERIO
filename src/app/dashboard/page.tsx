@@ -1,5 +1,5 @@
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { Image as ImageIcon } from 'lucide-react'
 import { PageHeader } from '@/components/shell/PageHeader'

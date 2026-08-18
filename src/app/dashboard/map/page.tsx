@@ -1,5 +1,5 @@
 'use client'
-export const dynamic = 'force-dynamic'
+
 import { useEffect, useRef, useState } from 'react'
 import { MapPin } from 'lucide-react'
 import { PageHeader } from '@/components/shell/PageHeader'
