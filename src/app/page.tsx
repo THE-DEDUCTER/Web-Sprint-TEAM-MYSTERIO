@@ -71,7 +71,7 @@ export default function LandingPage() {
               <div className={styles.widgetDot}></div>
               <div className={styles.widgetDot}></div>
             </div>
-            <span style={{ marginLeft: "auto", fontSize: "12px", color: "#666" }}>Today's App Interactions</span>
+            <span style={{ marginLeft: "auto", fontSize: "12px", color: "#666" }}>Today&apos;s App Interactions</span>
           </div>
           <div className={styles.widgetNumber}>
             <span style={{ fontSize: "24px", color: "#9ca3af" }}>👁</span>
@@ -188,7 +188,7 @@ export default function LandingPage() {
             The platform features <strong>end-to-end encrypted messaging</strong> through the Connect module, allowing students to chat privately with friends or in groups. The <strong>XD (Exchange)</strong> module acts as an exclusive marketplace for the campus, enabling students to securely buy, sell, and exchange items, books, and study materials.
           </p>
           <p>
-            Cohort also features an <strong>interactive campus map</strong>, powered by TomTom, helping new students navigate PCCOE's sprawling campus. The integrated <strong>academic calendar</strong> keeps everyone synchronized with exam schedules, holidays, and submission deadlines. Students can build their professional presence through <strong>achievement profiles</strong>, showcasing certifications, hackathon wins, and project accomplishments to peers and faculty alike.
+            Cohort also features an <strong>interactive campus map</strong>, powered by TomTom, helping new students navigate PCCOE&apos;s sprawling campus. The integrated <strong>academic calendar</strong> keeps everyone synchronized with exam schedules, holidays, and submission deadlines. Students can build their professional presence through <strong>achievement profiles</strong>, showcasing certifications, hackathon wins, and project accomplishments to peers and faculty alike.
           </p>
           <p>
             Built with modern technologies including React, Supabase, and real-time WebSockets, Cohort delivers a fast, responsive experience across devices. The platform prioritizes student privacy, data security, and collaborative tools—making it a digital extension of the PCCOE experience.
